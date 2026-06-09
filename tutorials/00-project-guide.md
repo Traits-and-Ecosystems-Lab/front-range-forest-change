@@ -1,17 +1,22 @@
 # Project Guide: Getting Started
 
-Welcome to the Front Range Forest Change project! This guide covers the essentials: how to open your workspace, where to put things, and how to save your work.
+Hello team! This guide covers the essentials: how to open your workspace, where to put things, and how to save your work using the VS Code interface in your browser-based Codespace.
 
 ---
 
 ## Opening Your Codespace
 
-1. Go to our repo on GitHub (your mentor will share the link).
-2. Click the green **`<> Code`** button → **Codespaces** tab → **Create codespace on main**.
-3. Wait 1–2 minutes (first time takes longer — it's building your Python environment).
-4. You'll see VS Code in your browser. The terminal at the bottom should show ✅ Environment ready.
+1. Go to our repo on GitHub.
+2. Click the green **`<> Code`** button.
+3. Open the **Codespaces** tab.
+4. Click **Create codespace on main**.
+5. Wait 1-2 minutes (first launch can take longer).
+6. VS Code opens in your browser and loads the project.
 
-**To reopen an existing Codespace:** Go to [github.com/codespaces](https://github.com/codespaces) and click on your Codespace. Don't create a new one each time!
+**Notebook environment check (important):**
+When you open a notebook, use the kernel picker in the top-right and choose **`esiil-stars (Python 3.11.15)`**. Do **not** choose **`base`**.
+
+**To reopen an existing Codespace:** Go to [github.com/codespaces](https://github.com/codespaces) and click your existing Codespace. Do not create a new one each session unless you mean to start fresh.
 
 ---
 
@@ -19,41 +24,43 @@ Welcome to the Front Range Forest Change project! This guide covers the essentia
 
 ```
 front-range-forest-change/
-│
-├── notebooks/        ← Your analysis notebooks go here
-├── scripts/          ← Shared helper functions (utils.py)
-├── tutorials/        ← Learning materials (you are here!)
-├── data/             ← Small exported CSVs and tables only
-├── figures/          ← Saved plots and maps (PNG, 300 dpi)
-└── README.md         ← Project overview
+|
+|-- notebooks/        <- Your analysis notebooks go here
+|-- scripts/          <- Shared helper functions (utils.py)
+|-- tutorials/        <- Learning materials (you are here)
+|-- data/             <- Small exported CSVs and tables only
+|-- figures/          <- Saved plots and maps (PNG, 300 dpi)
+`-- README.md         <- Project overview
 ```
 
 **Rules of thumb:**
-- Write your analysis code in `notebooks/`.
-- Save figures to `figures/` using `plt.savefig('figures/my_plot.png', dpi=300, bbox_inches='tight')`.
-- The `data/` folder is for small files only (CSVs, GeoJSONs). We access all large raster data through Google Earth Engine — no downloading needed.
-- Don't modify files in `scripts/utils.py` without checking with your teammates first — everyone imports from it.
+- Write analysis work in `notebooks/`.
+- Save figures to `figures/` (example: `my_plot.png`, 300 dpi).
+- Keep only small files in `data/` (CSV, GeoJSON, small tables).
+- Do not modify `scripts/utils.py` without checking with teammates first.
 
 ---
 
-## Saving Your Work with Git
+## Saving Your Work (GUI-Only Git Workflow)
 
-Think of Git as a "save checkpoint" system. Every time you reach a working state, you save a checkpoint (called a **commit**) that you and your team can always go back to.
+Think of Git as a checkpoint system. In VS Code, you can do this entirely through the Source Control panel.
 
-### The three commands you'll use most
+### How to commit and push from the interface
 
-Open the **Terminal** at the bottom of VS Code (or press `` Ctrl+` ``):
+1. Click the **Source Control** icon in the left sidebar (branch icon).
+2. Review changed files under **Changes**.
+3. Click a file to preview the diff.
+4. Click the **+** next to each file (or **Stage All Changes**) to stage.
+5. Type a short commit message in the message box at the top.
+6. Click **Commit**.
+7. Click **Sync Changes** (or **Push**) to upload to GitHub.
 
-```bash
-git add .                          # Stage all your changes
-git commit -m "Add NDVI analysis"  # Save a checkpoint with a message
-git push                           # Upload to GitHub so others can see it
-```
+If this is your first commit on a new branch, VS Code may show **Publish Branch** instead of Push. Click it.
 
-**Commit messages should be short and descriptive.** Say *what* you did, not *that* you did something.
+**Commit messages should be short and descriptive.** Say what changed.
 
-| ✅ Good | ❌ Bad |
-|---------|--------|
+| Good | Bad |
+|---|---|
 | "Add NLCD visualization for 2001 and 2021" | "Updated notebook" |
 | "Fix elevation band boundaries" | "Changes" |
 | "Add figures for presentation" | "Stuff" |
@@ -62,64 +69,67 @@ git push                           # Upload to GitHub so others can see it
 
 ## Branches: Keeping Main Clean
 
-**`main` is the team's shared, working copy.** Think of it as the "clean room" — only code that runs without errors and is ready for your teammates should go here.
+**`main` is the shared stable branch.** Keep it clean and working.
 
-**A branch is your personal workspace.** You can experiment, break things, and iterate without affecting anyone else.
+**A branch is your personal workspace.** Use branches for experiments and in-progress work.
 
 ### When to use a branch
 
-- You're trying something new and aren't sure it'll work.
-- You're working on a feature that takes more than one sitting.
-- You want feedback before merging into main.
+- You are trying something new.
+- Work will take more than one session.
+- You want review before merging.
 
-### When to commit directly to main
+### When direct commits to main are okay
 
-- Small, safe changes (fixing a typo, adding a comment).
-- You've tested the code and it runs end-to-end.
+- Very small safe edits (for example, typo fixes).
+- You have tested and confirmed everything runs.
 
-### How to use a branch
+### Create and use a branch in the GUI
 
-```bash
-# Create and switch to your branch
-git checkout -b maria-ndvi-analysis
-
-# Work, commit, push as normal
-git add .
-git commit -m "Draft NDVI time series"
-git push -u origin maria-ndvi-analysis
-
-# When ready, open a Pull Request on GitHub
-# Your mentor will review and merge it into main
-```
-
-**Branch naming:** Use your name + what you're working on.
-Examples: `james-dem-analysis`, `alex-nlcd-timeseries`, `maria-figures`.
-
-### Getting updates from main
-
-When a teammate's work gets merged into main:
-
-```bash
-git checkout main        # Switch to main
-git pull                 # Get the latest changes
-git checkout my-branch   # Go back to your branch
-git merge main           # Bring main's updates into your branch
-```
+1. Click the branch name in the lower-left status bar (for example, `main`).
+2. Select **Create new branch...**
+3. Name it using `yourname-topic` (example: `malia-ndvi-analysis`).
+4. Make edits and commit from Source Control.
+5. Click **Publish Branch** (first time) or **Sync Changes**.
+6. Open a Pull Request from the GitHub panel or the PR prompt in VS Code when it appears.
 
 ---
 
-## Quick Reference
+## Staying Synced When You Are Behind
 
-| I want to... | Command |
+You will sometimes see messages like **"Your branch is behind"** or an indicator that incoming changes exist.
+
+### Case 1: Your local `main` is behind remote `main`
+
+1. Switch to `main` using the branch picker in the lower-left.
+2. In Source Control, click **Sync Changes** or open **...** menu -> **Pull**.
+3. Wait for completion, then confirm no incoming changes remain.
+
+### Case 2: Your feature branch is behind because `main` advanced
+
+1. Switch to `main` and pull/sync latest updates.
+2. Switch back to your feature branch.
+3. Open the Command Palette (`Ctrl+Shift+P`) and choose **Git: Merge Branch...**
+4. Select `main` to merge latest `main` into your branch.
+5. If conflicts appear, use the merge editor buttons (**Accept Current**, **Accept Incoming**, or **Accept Both**), then complete the merge commit.
+6. Click **Sync Changes** to push your updated branch.
+
+This keeps your branch up to date before opening or updating a Pull Request.
+
+---
+
+## Quick GUI Reference
+
+| I want to... | In VS Code browser UI |
 |---|---|
-| See what I've changed | `git status` |
-| Save my work | `git add .` → `git commit -m "message"` → `git push` |
-| Create a branch | `git checkout -b name-feature` |
-| Switch branches | `git checkout branch-name` |
-| Go back to main | `git checkout main` |
-| Get teammates' updates | `git pull` |
-| Open a notebook | Click any `.ipynb` file in the left sidebar |
+| See what changed | Open **Source Control** and review **Changes** |
+| Save work to GitHub | Stage -> Commit -> **Sync Changes** |
+| Create a branch | Click branch name in status bar -> **Create new branch...** |
+| Switch branches | Click branch name in status bar -> select branch |
+| Update local main | Switch to `main` -> **Sync Changes** or **Pull** |
+| Bring main updates into my branch | Switch back to your branch -> **Git: Merge Branch...** -> choose `main` |
+| Open a notebook | Click any `.ipynb` file in the Explorer |
 
 ---
 
-**When in doubt, ask!** It's much easier to fix a Git problem early than after several commits. If you see a merge conflict or something unexpected, message your mentor before trying to resolve it.
+When something looks confusing (especially merge conflicts), ask early. It is much easier to fix Git issues right away than after many commits.
