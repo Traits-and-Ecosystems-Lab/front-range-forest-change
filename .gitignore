@@ -1,0 +1,40 @@
+# ── Python ─────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Jupyter ────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_metadata/
+
+# ── Conda / Environments ──────────────────────────
+.conda/
+*.env
+
+# ── GEE credentials (NEVER commit these) ──────────
+.config/earthengine/
+credentials
+
+# ── Data files (too large for git) ────────────────
+data/*.tif
+data/*.geotiff
+data/*.nc
+data/*.hdf
+data/*.h5
+data/*.zip
+data/*.tar.gz
+*.tif
+*.geotiff
+
+# ── OS files ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ────────────────────────────────────────────
+.vscode/
+!.vscode/settings.json
+.idea/
