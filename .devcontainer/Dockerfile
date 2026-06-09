@@ -5,8 +5,19 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
+RUN existing_group="$(getent group "$USER_GID" | cut -d: -f1 || true)" \
+    && if ! id -u "$USERNAME" >/dev/null 2>&1; then \
+        if getent passwd "$USER_UID" >/dev/null; then \
+            existing_user="$(getent passwd "$USER_UID" | cut -d: -f1)"; \
+            usermod --login "$USERNAME" --move-home --home "/home/$USERNAME" --shell /bin/bash "$existing_user"; \
+        else \
+            if [ -z "$existing_group" ]; then \
+                groupadd --gid "$USER_GID" "$USERNAME"; \
+                existing_group="$USERNAME"; \
+            fi; \
+            useradd --uid "$USER_UID" --gid "$existing_group" -m "$USERNAME" -s /bin/bash; \
+        fi; \
+    fi \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         sudo git curl ca-certificates \
