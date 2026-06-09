@@ -47,10 +47,11 @@ Colorado Front Range foothills — from the eastern plains (~1,500 m) through th
 
 | Role | Name | Focus |
 |------|------|-------|
+| Intern 1 | TBD | TBD |
+| Intern 2 | TBD | TBD |
+| Intern 3 | TBD | TBD |
 | Faculty Mentor | Saif | Project design, code review |
-| Intern 1 | TBD | Data acquisition & AOI definition |
-| Intern 2 | TBD | NLCD change analysis by elevation |
-| Intern 3 | TBD | Visualization & climate context |
+| Faculty Mentor | Sandra | Project design, review |
 
 ## Lab
 
