@@ -52,8 +52,7 @@ Think of Git as a checkpoint system. In VS Code, you can do this entirely throug
 3. Click a file to preview the diff.
 4. Click the **+** next to each file (or **Stage All Changes**) to stage.
 5. Type a short commit message in the message box at the top.
-6. Click **Commit**.
-7. Click **Sync Changes** (or **Push**) to upload to GitHub.
+6. Click **Commit & Push** (small drop down arrow besides commit button). This directly syncronizes changes into the github. Alternatively you can do this step by step by clicking **Commit** and then clicking **Sync Changes** (or **Push**) to upload to GitHub.
 
 If this is your first commit on a new branch, VS Code may show **Publish Branch** instead of Push. Click it.
 
