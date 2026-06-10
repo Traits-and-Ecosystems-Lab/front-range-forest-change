@@ -18,6 +18,8 @@ When you open a notebook, use the kernel picker in the top-right and choose **`e
 
 **To reopen an existing Codespace:** Go to [github.com/codespaces](https://github.com/codespaces) and click your existing Codespace. Do not create a new one each session unless you mean to start fresh.
 
+Please turn off existing codespace usage, e.g. your ESIIL workshop tutorials.
+
 ---
 
 ## Where Things Go
@@ -34,7 +36,7 @@ front-range-forest-change/
 ```
 
 **Rules of thumb:**
-- Write analysis work in `notebooks/`.
+- Write analysis work in `notebooks/`. **Keep your notebooks short. I noticed adding too many cells overwhelms codespace.**
 - Save figures to `figures/` (example: `my_plot.png`, 300 dpi).
 - Keep only small files in `data/` (CSV, GeoJSON, small tables).
 - Do not modify `scripts/utils.py` without checking with teammates first.
